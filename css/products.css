@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* header */
+
+.radial-bg {
+    background-color: #2a6049;
+    padding: 10px 0;
+}
+
+.c-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+form a {
+    font-size: 17px;
+    padding: 0px 20px;
+    color: #fff;
+}
+form a:hover {
+    color: #fff !important;
+}
+
+/* navbar  */
+.logo {
+    height: 50px;
+    padding-left: 40px;
+}
+
+.navbar-brand,
+.nav-link {
+    color: #2a6049 !important;
+    font-size: 20px !important;
+}
+ul li a {
+    margin-left: 30px;
+    text-decoration: initial !important;
+}
+
+a:hover {
+    text-decoration: underline !important;
+}
+
+/*  seciton1 cards */
+
+.bgimg1 {
+    background-image: url(/images/images1.jpeg);
+    background-color: red;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    cursor: pointer;
+}
+
+.bgimg2 {
+    background-image: url(/images/images2.jpeg);
+    background-color: red;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+}
+.bgimg3 {
+    background-image: url(/images/images3.jpeg);
+    background-color: red;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+}
+.bgimg4 {
+    background-image: url(/images/images4.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+}
+
+.card{
+    cursor: pointer;
+    
+  }
+
+#section1 {
+    background-color: #eaeded;
+}
+
+.season a {
+    /* border: 2px solid blue; */
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+/* On mouse-over */
+.season a:hover {
+    background: rgba(218, 26, 154, 0.432);
+}
+
+.Summer {
+    color: green;
+}
+.Winter {
+    color: dodgerblue;
+}
+.Rainy {
+    color: orange;
+}
+.Autumn {
+    color: red;
+}
+
+.fcolor {
+    color: #2a6049;
+}
+
+.img-fluid {
+    height: 300px !important;
+    object-fit: cover;
+    object-position: center;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 0 16px;
+}
+
+.container::after,
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.title {
+    color: grey;
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #2a6049;
+    text-align: center;
+    /* cursor: pointer; */
+    width: 100%;
+}
+
+.btn-success {
+    background-color: #2a6049 !important;
+    width: 100%;
+    padding: 8px !important;
+    border: none !important;
+    margin-bottom: 12px;
+    border-radius: none !important;
+}
+
+.btn-sicess:hover {
+    background-color: #555 !important;
+}
+
+/*  */
+Footer .footer-top {
+    padding: 60px 0;
+    background: #333;
+    text-align: left;
+    color: #aaa;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+
+    header {
+        display: none !important;
+    }
+
+    .logo {
+        padding-left: 15px!important;
+    }
+    ul li a {
+        margin-left: 0px;
+    }
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    .season {
+        font-size: 20px;
+    }
+
+    .navbar-light .navbar-toggler {
+
+        margin-right: 10px!important;
+       }
+      
+}
