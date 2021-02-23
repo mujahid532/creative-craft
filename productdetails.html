@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>prdtdetails</title>
-    <link rel="stylesheet" href="/css/productdetails.css">
+    <link rel="icon" href="images/logo bg.png">
+    <link rel="stylesheet" href="css/productdetails.css">
 
     <!-- boostrap Css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -63,7 +64,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top navpaddingleft p-0">
         <a class="navbar-brand" href="#">
-            <img src="/images/logo bg.png" class="logo" alt="logo"></a>
+            <img src="images/logo bg.png" class="logo" alt="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -75,7 +76,7 @@
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#section2">Products</a>
+                    <a class="nav-link" href="products.html">Products</a>
 
                 </li>
                 <li class="nav-item">
@@ -99,38 +100,51 @@
             <div class="row no-gutters text-white p-3">
                 <div class="col-md-6">
                     <div class="bgimg1">
-
+                        <img class="card-img pimage" src="" alt="image">
                     </div>
                     <!-- <img class="card-img" src="/images/images (8).jpeg" alt="images details"> -->
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
-                        <h1 class="card-title">Suresh Dasari</h1>
+                        <h1 class="card-title ptitle"></h1>
                         <br>
-                        <h5 class="card-text">Suresh Dasari is a founder and technical lead developer in tutlane.</h5>
+                        <h5 class="card-text pdesc"></h5>
                         <br>
 
-                        <div class="dotcolor">
+                        <!-- <div class="dotcolor">
                             <h5 class="">Color :
                                 <span class="dot1"></span>
                                 <span class="dot2"></span>
                                 <span class="dot3"></span>
                                 <span class="dot4"></span>
                             </h5>
+                        </div> -->
+                        <div class="d-flex">
+                            <div class="size ">
+                                <h5>Size: <span></span></h5>
+                                
+                            </div>
+                            <div class="season ">
+                                <h5>Season: <span></span></h5>
+                                
+                            </div>
+                        </div>
+                        <div class="age">
+                            <h5>For age between: <span></span></h5>
                         </div>
                         <br>
 
-                        <div class="">
+                        <div >
                             <h5>
 
-                                Price : Rs : 350/-
+                                Price : Rs <span class="price"></span>/-
                             </h5>
                         </div>
 
 
                         <br>
                         <br>
-                        <a href="#" class="btn btn-warning text-white font-weight-bold mr-5">Add to Cart</a>
+                        <a  class="btn btn-warning text-white font-weight-bold mr-5 addtocart">Add to Cart</a>
                         <a href="#" class="btn btn-warning text-white font-weight-bold">Buy Now</a>
 
                     </div>
@@ -150,7 +164,7 @@
                 <div class="row">
                     <div class="col-md-4 col-lg-4 footer-about wow fadeInUp animated"
                         style="visibility: visible; animation-name: fadeInUp;">
-                        <img class="logo-footer" src="/images/logo bg.png" height="100px" alt="logo-footer">
+                        <img class="logo-footer" src="images/logo bg.png" height="100px" alt="logo-footer">
                         <p>
                             We are a young company always looking for new and creative ideas to help you with our
                             products in your everyday life.
@@ -189,7 +203,35 @@
         </div>
 
     </footer>
+<script src= "https://code.jquery.com/jquery-3.5.1.js"> 
+</script>
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        const parameter=new URLSearchParams(window.location.search);
+    var dat=parameter.get('name');
+    console.log(dat);
+        // FETCHING DATA FROM JSON FILE 
+        $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",function (data) {
+                
+                // ITERATING THROUGH OBJECTS 
+                $.each(data, function (key, value) {
+                    if(value.Product_Id==dat){
+                        $('.ptitle').html(value.Product_Name);
+                        $('.pdesc').html(value.Description);
+                        $('.price').html(value.Product_Cost)
+                        $('.pimage').attr('src',value.Image_URL)
+                        $('.size span').html(value.Size)
+                        $('.season span').html(value.Season)
+                        $('.age span').html(value.Age)
+                        // $('.pimage').attr('alt',value.Product_Name.substring(0,15))
+                        
+                    }
 
+                });
+        });
+    });
+</script>
 
 </body>
 

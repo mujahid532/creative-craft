@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
+    <link rel="icon" href="images/logo bg.png">
 
-    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="css/products.css">
 
 
 
@@ -22,7 +23,9 @@
         crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/sharer.js/latest/sharer.min.js"></script>
-
+<script src= 
+"https://code.jquery.com/jquery-3.5.1.js"> 
+    </script> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -61,7 +64,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top navpaddingleft p-0">
         <a class="navbar-brand" href="#">
-            <img src="/images/logo bg.png" class="logo" alt="logo"></a>
+            <img src="images/logo bg.png" class="logo" alt="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -73,7 +76,7 @@
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#section2">Products</a>
+                    <a class="nav-link" href="#">Products</a>
 
                 </li>
                 <li class="nav-item">
@@ -101,69 +104,8 @@
         </h4>
 
 
-        <div class="row m-0">
-
-            <div class="column">
-                <div class="card" onclick="window.open('productdetails.html','_self')">
-
-                    <div class="bgimg1">
-
-                    </div>
-                    <div class="container">
-                        <h2>Mike Ross</h2>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">Order
-                                Now</button>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="card">
-                    <div class="bgimg2">
-
-                    </div>
-
-                    <div class="container">
-                        <h2>John Doe</h2>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">Order
-                                Now</button>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="card">
-
-                    <div class="bgimg3">
-
-                    </div>
-                    <div class="container">
-                        <h2>John Doe</h2>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">Order Now</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <div class="bgimg4">
-
-                    </div>
-                    <div class="container">
-                        <h2>John Doe</h2>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">Order Now</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        
+        <div class="row m-0" id="get">
 
         </div>
 
@@ -219,7 +161,45 @@
 
     </footer>
 
+<script type="text/javascript">
+$(document).ready(function () { 
+    
+                    // FETCHING DATA FROM JSON FILE 
+                    $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",  
+                            function (data) { 
+                                name='';
+                            
+                        // ITERATING THROUGH OBJECTS 
+                            $.each(data, function (key, value) { 
+  
+                            
+                            num=value.Product_Name
+                            name+='<div class="column">'
+                            name+='      <div class="card pdetails" id='+value.Product_Id+'>'
 
+                            name+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+
+                                            
+                            name+='          <div class="container">'
+                            name+='             <h2 class="" >'+num+'</h2>'
+                            name+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                            name+='                </p></div></div></div>'
+
+                            
+                            
+                        }); 
+                          
+                        //INSERTING ROWS INTO TABLE  
+                        $('#get').html(name); 
+                        $('.pdetails').click(function(event){
+                            val=$(this).attr('id');
+                            console.log('clicked:'+val);
+                            newURl = window.location.href='productdetails.html?name='+val
+                        });
+                        
+                    }); 
+                }); 
+</script>
 </body>
 
 </html>

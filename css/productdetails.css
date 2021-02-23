@@ -53,12 +53,16 @@ a:hover {
 /* card */
 
 .bgimg1 {
-    background-image: url(/images/images1.jpeg);
-    background-color: red;
+    
+    background-color: #fff;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
     height: 450px;
+}
+.bgimg1 img{
+    height: 100%;
+    width: 100%;
 }
 .card {
     margin: 40px auto;
@@ -93,6 +97,23 @@ a:hover {
     background-color:yellow;
     border-radius: 50%;
     display: inline-block;
+  }
+  .size{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+  .size span{
+    font-size: 16px;
+  }
+  .season{
+    margin-left: 20px;
+  }
+  .season span{
+    font-size: 16px;
+  }
+  .age span{
+    font-size: 16px;
   }
 .no-gutters {
     background-image: linear-gradient(to right, #ab140157, #a154f2);

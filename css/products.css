@@ -51,12 +51,16 @@ a:hover {
 
 .bgimg1 {
     background-image: url(/images/images1.jpeg);
-    background-color: red;
+    background-color: #fff;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 300px;
     cursor: pointer;
+}
+.bgimg1 img{
+    width: 300px;
+    height: 300px;
 }
 
 .bgimg2 {

@@ -48,6 +48,10 @@ ul li a {
 a:hover{
   text-decoration: underline !important;
 }
+.font{
+  font-size: 1.8rem;
+  
+}
 
 /* article carousel 1 */
 .carousel-caption {
@@ -105,12 +109,16 @@ h3 {
 
 .bgimg1{
   background-image: url(/images/images1.jpeg);
-  background-color:red;
+  background-color:#fff;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height:300px;
 
+  }
+  .bgimg1 img{
+    height: 300px;
+    width:300px;
   }
 
 .bgimg2{
