@@ -9,8 +9,6 @@
 
     <link rel="stylesheet" href="css/products.css">
 
-
-
     <!-- boostrap Css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -32,8 +30,6 @@
 </head>
 
 <body>
-
-
 
     <header id="Home" class="page_header">
 
@@ -93,24 +89,62 @@
     <!-- navbar End -->
 
     <section id="section1" class="product_heading text-center p-4">
-
-
         <h1 class="fcolor">Products</h1>
-        <h4 class="season">
+        <!-- <h4 class="">
             <a href="" class="Summer">Summer</a>
             <a href="" class="Winter">Winter</a>
             <a href="" class="Rainy">Rainy</a>
             <a href="" class="Autumn">Autumn</a>
-        </h4>
+        </h4> -->
 
 
+        <ul class="nav season justify-content-center nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active home" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recommended</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link Summer" id="Summer-tab" data-toggle="tab" href="#Summer" role="tab" aria-controls="profile" aria-selected="false">Summer</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link Winter" id="Winter-tab" data-toggle="tab" href="#Winter" role="tab" aria-controls="profile" aria-selected="false">Winter</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link Rainy" id="Rainy-tab" data-toggle="tab" href="#Rainy" role="tab" aria-controls="contact" aria-selected="false">Rainy</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link Autumn" id="Autumn-tab" data-toggle="tab" href="#Autumn" role="tab" aria-controls="contact" aria-selected="false">Autumn</a>
+            </li>
+          </ul>
+          <!-- Tabs -->
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row m-0" id="get">
+
+                </div>        
+            </div>
+            <div class="tab-pane fade" id="Summer" role="tabpanel" aria-labelledby="Summer-tab">
+                <div class="row m-0" id="getSummer">
+
+                </div>   
+            </div>
+            <div class="tab-pane fade" id="Winter" role="tabpanel" aria-labelledby="Winter-tab">
+                <div class="row m-0" id="getWinter">
+
+                </div> 
+            </div>
+            <div class="tab-pane fade" id="Rainy" role="tabpanel" aria-labelledby="Rainy-tab">
+                <div class="row m-0" id="getRainy">
+
+                </div> 
+            </div>
+            <div class="tab-pane fade" id="Autumn" role="tabpanel" aria-labelledby="Autumn-tab">
+                <div class="row m-0" id="getAutumn">
+
+                </div> 
+            </div>
+          </div>
         
-        <div class="row m-0" id="get">
-
-        </div>
-
     </section>
-
 
     <footer id="section2">
 
@@ -163,38 +197,121 @@
 
 <script type="text/javascript">
 $(document).ready(function () { 
-    
                     // FETCHING DATA FROM JSON FILE 
                     $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",  
                             function (data) { 
                                 name='';
-                            
                         // ITERATING THROUGH OBJECTS 
-                            $.each(data, function (key, value) { 
-  
-                            
+                            $.each(data, function (key, value) {                             
                             num=value.Product_Name
                             name+='<div class="column">'
                             name+='      <div class="card pdetails" id='+value.Product_Id+'>'
-
                             name+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
-
                                             
                             name+='          <div class="container">'
                             name+='             <h2 class="" >'+num+'</h2>'
                             name+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
                             name+='                </p></div></div></div>'
-
-                            
                             
                         }); 
-                          
+
+                        $('.nav-link').click( function(){
+                            link_val = $(this).text()
+                            nameSummer='';
+                            nameWinter = '';
+                            nameRainy = '';
+                            nameAutumn = '';
+                            if(link_val == 'Summer'){
+                                $.each(data, function (key, value) { 
+                                    if(value.Season == 'Summer'){
+
+                                        num=value.Product_Name
+                                        nameSummer+='<div class="column">'
+                                        nameSummer+='      <div class="card pdetails" id='+value.Product_Id+'>'
+                                        nameSummer+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+                                                        
+                                        nameSummer+='          <div class="container">'
+                                        nameSummer+='             <h2 class="" >'+num+'</h2>'
+                                        nameSummer+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                                        nameSummer+='                </p></div></div></div>'
+                                    }
+                                });   
+                                $('#getSummer').html(nameSummer);   
+                                $('.pdetails').click(function(event){
+                                    val=$(this).attr('id');
+                                    console.log('clicked:'+val);
+                                    newURl = window.location.href='productdetails.html?name='+val
+                                });                      
+                            }else if(link_val == 'Winter'){
+                                $.each(data, function (key, value) { 
+                                    if(value.Season == 'Winter'){
+
+                                        num=value.Product_Name
+                                        nameWinter+='<div class="column">'
+                                        nameWinter+='      <div class="card pdetails" id='+value.Product_Id+'>'
+                                        nameWinter+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+                                                        
+                                        nameWinter+='          <div class="container">'
+                                        nameWinter+='             <h2 class="" >'+num+'</h2>'
+                                        nameWinter+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                                        nameWinter+='                </p></div></div></div>'
+                                    }
+                                });   
+                                $('#getWinter').html(nameWinter);
+                                $('.pdetails').click(function(event){
+                                    val=$(this).attr('id');
+                                    console.log('clicked:'+val);
+                                    newURl = window.location.href='productdetails.html?name='+val
+                                });
+                            }else if(link_val == 'Rainy'){
+                                $.each(data, function (key, value) { 
+                                    if(value.Season == 'Rainy'){
+                                        num=value.Product_Name
+                                        nameRainy+='<div class="column">'
+                                        nameRainy+='      <div class="card pdetails" id='+value.Product_Id+'>'
+                                        nameRainy+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+                                                        
+                                        nameRainy+='          <div class="container">'
+                                        nameRainy+='             <h2 class="" >'+num+'</h2>'
+                                        nameRainy+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                                        nameRainy+='                </p></div></div></div>'
+                                    }
+                                });   
+                                $('#getRainy').html(nameRainy);
+                                $('.pdetails').click(function(event){
+                                    val=$(this).attr('id');
+                                    console.log('clicked:'+val);
+                                    newURl = window.location.href='productdetails.html?name='+val
+                                });
+                            }else if(link_val == 'Autumn'){
+                                $.each(data, function (key, value) { 
+                                    if(value.Season == 'Autumn'){
+
+                                        num=value.Product_Name
+                                        nameAutumn+='<div class="column">'
+                                        nameAutumn+='      <div class="card pdetails" id='+value.Product_Id+'>'
+                                        nameAutumn+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+                                                        
+                                        nameAutumn+='          <div class="container">'
+                                        nameAutumn+='             <h2 class="" >'+num+'</h2>'
+                                        nameAutumn+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                                        nameAutumn+='                </p></div></div></div>'
+                                    }
+                                });   
+                                $('#getAutumn').html(nameAutumn);
+                                $('.pdetails').click(function(event){
+                                    val=$(this).attr('id');
+                                    console.log('clicked:'+val);
+                                    newURl = window.location.href='productdetails.html?name='+val
+                                });
+                            }
+                        })
                         //INSERTING ROWS INTO TABLE  
                         $('#get').html(name); 
                         $('.pdetails').click(function(event){
                             val=$(this).attr('id');
                             console.log('clicked:'+val);
-                            newURl = window.location.href='productdetails.html?name='+val
+                           /// newURl = window.location.href='productdetails.html?name='+val
                         });
                         
                     }); 
