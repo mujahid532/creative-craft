@@ -245,7 +245,7 @@ height:300px;
   text-align: center;
   width: 100%;
 }
-
+/* 
 .btn-success{
   background-color: #2a6049 !important;
   width: 100%;
@@ -254,7 +254,7 @@ height:300px;
   margin-bottom: 12px ;
   border-radius: none !important;
 
-}
+} */
 
 .btn-sicess:hover {
   background-color: #555 !important;
@@ -299,10 +299,10 @@ height:300px;
   .navbar-collapse {
     text-align: center;
   }
-
+/* 
   .r-content {
     margin-left: 0px important;
-  }
+  } */
 
   #section {
     height: 30vh;
