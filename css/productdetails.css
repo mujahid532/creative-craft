@@ -119,7 +119,7 @@ a:hover {
   }
 .no-gutters {
     /* background-image: linear-gradient(to right, #ab140157, #a154f2); */
-    background: linear-gradient(to top, #2a6048d2, rgba(#6a6584)) !important; 
+    background: linear-gradient(to top, #2a6048d2, #6a6584) !important; 
     box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.4);
     width: 90%;
     
