@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #c484cb36 !important;
+    /* background-color: #c484cb36 !important; */
 }
 /* header */
 
@@ -65,9 +65,11 @@ a:hover {
     width: 100%;
 }
 .card {
-    margin: 40px auto;
+    margin: 40px 0px;
     /* font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-family: "Amazon Ember", Arial, sans-serif;
+    border: none !important;
+    align-items: center;
 }
 
 .dot1 {
@@ -116,14 +118,17 @@ a:hover {
     font-size: 16px;
   }
 .no-gutters {
-    background-image: linear-gradient(to right, #ab140157, #a154f2);
+    /* background-image: linear-gradient(to right, #ab140157, #a154f2); */
+    background: linear-gradient(to top, #2a6048d2, rgba(#6a6584)) !important; 
     box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.4);
+    width: 90%;
+    
 }
 
-.btn-warning:hover {
+/* .btn-warning:hover {
     background-color: #ffc107 !important;
     border-color: #ffc107 !important;
-}
+} */
 
 /* footer */
 .footer-top {
@@ -136,6 +141,7 @@ a:hover {
 .btn-warning{
     background-color: #a356f0cb !important;
     border-color: #2a6049 !important;
+    margin-right: 10px;
     
 }
 .btn-warning.focus, .btn-warning:focus{
