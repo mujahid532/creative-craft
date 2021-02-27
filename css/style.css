@@ -53,6 +53,13 @@ a:hover{
   
 }
 
+.cartcolor{
+  color: #2a6049 !important;
+  font-size: 20px;
+ margin-right: 25px;
+}
+
+
 /* article carousel 1 */
 .carousel-caption {
   top: 10%;

@@ -47,6 +47,13 @@ a:hover {
     text-decoration: underline !important;
 }
 
+
+.cartcolor{
+    color: #2a6049 !important;
+    font-size: 20px;
+   margin-right: 25px;
+  }
+
 /*  seciton1 cards */
 
 .bgimg1 {

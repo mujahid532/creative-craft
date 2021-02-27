@@ -4,9 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
-    /* background-color: #c484cb36 !important; */
-}
+
 /* header */
 
 .radial-bg {
@@ -50,6 +48,13 @@ a:hover {
     text-decoration: underline !important;
 }
 
+
+.cartcolor{
+    color: #2a6049 !important;
+    font-size: 20px;
+   margin-right: 25px;
+  }
+
 /* card */
 
 .bgimg1 {
@@ -63,6 +68,7 @@ a:hover {
 .bgimg1 img{
     height: 100%;
     width: 100%;
+    border-radius: 15px 50px;
 }
 .card {
     margin: 40px 0px;
@@ -119,7 +125,7 @@ a:hover {
   }
 .no-gutters {
     /* background-image: linear-gradient(to right, #ab140157, #a154f2); */
-    background: linear-gradient(to top, #2a6048d2, #6a6584) !important; 
+    background: linear-gradient(to top, #458b6cd2, #978dca) !important; 
     box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.4);
     width: 90%;
     
