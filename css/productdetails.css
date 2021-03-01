@@ -4,9 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: #c484cb36 !important;
-}
+
 /* header */
 
 .radial-bg {
@@ -67,6 +65,13 @@ a:hover {
     border-radius: 50%;
 }
 
+
+.cartcolor{
+    color: #2a6049 !important;
+    font-size: 20px;
+   margin-right: 25px;
+  }
+
 /* card */
 
 .bgimg1 {
@@ -80,11 +85,14 @@ a:hover {
 .bgimg1 img{
     height: 100%;
     width: 100%;
+    border-radius: 15px 50px;
 }
 .card {
-    margin: 40px auto;
+    margin: 40px 0px;
     /* font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-family: "Amazon Ember", Arial, sans-serif;
+    border: none !important;
+    align-items: center;
 }
 
 .dot1 {
@@ -133,14 +141,17 @@ a:hover {
     font-size: 16px;
   }
 .no-gutters {
-    background-image: linear-gradient(to right, #ab140157, #a154f2);
+    /* background-image: linear-gradient(to right, #ab140157, #a154f2); */
+    background: linear-gradient(to top, #458b6cd2, #978dca) !important; 
     box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.4);
+    width: 90%;
+    
 }
 
-.btn-warning:hover {
+/* .btn-warning:hover {
     background-color: #ffc107 !important;
     border-color: #ffc107 !important;
-}
+} */
 
 /* footer */
 .footer-top {
@@ -153,6 +164,7 @@ a:hover {
 .btn-warning{
     background-color: #a356f0cb !important;
     border-color: #2a6049 !important;
+    margin-right: 10px;
     
 }
 .btn-warning.focus, .btn-warning:focus{
