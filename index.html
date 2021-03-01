@@ -93,6 +93,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#section5">Contact Us</a>
                 </li>
+                <li class="nav-item iconcart">
+                    <p>0</p>
+                    <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+                </li>
             </ul>
 
         </div>
@@ -313,8 +317,12 @@
     </section>
     <script type="text/javascript">
         $(document).ready(function () { 
-    
-                    // FETCHING DATA FROM JSON FILE 
+            let no = 0;
+            JSON.parse(localStorage.getItem('items')).map(data=>{
+            no = no+data.quantity;
+            });
+            $('.iconcart p').html(no);
+                    
                     $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",  
                             function (data) { 
                                 name='';

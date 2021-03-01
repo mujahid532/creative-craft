@@ -46,6 +46,23 @@ ul li a {
 a:hover {
     text-decoration: underline !important;
 }
+.iconcart{
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+    font-size: 1.8rem;
+}
+.iconcart p{
+    position: absolute;
+    color: #fff;
+    top: -2px;
+    right: -12px;
+    font-weight: 700;
+    font-size: 0.69rem;
+    background-color: #000;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
 
 /*  seciton1 cards */
 
