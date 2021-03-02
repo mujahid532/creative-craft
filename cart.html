@@ -60,7 +60,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top navpaddingleft p-0">
         <a class="navbar-brand" href="#">
-            <img src="/images/logo bg.png" class="logo" alt="logo"></a>
+            <img src="images/logo bg.png" class="logo" alt="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -72,7 +72,7 @@
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#section2">Products</a>
+                    <a class="nav-link" href="products.html">Products</a>
 
                 </li>
                 <li class="nav-item">
@@ -80,6 +80,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.html#section5">Contact Us</a>
+                </li>
+                <li class="nav-item iconcart">
+                    <p>0</p>
+                    <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
                 </li>
             </ul>
 
@@ -96,36 +100,20 @@
 
             <h1>Shopping cart</h1>
         </main>
-
         <table class="center">
             <tr class="cart-pdt">
-                <th class="p-2">Product</th>
-                <th>Quantity</th>
-                <th>price</th>
-            </tr>
-            <tr class="cart_body">
-
-                <td>
-
-                    <h6>Cap</h6>
-                    <img src="images/images1.jpeg" alt="" class="" style="width:80px; height:60px;">
-
-                    <span>description</span>
-
-                </td>
-
-                <td><input type="number" value="0" class="input-style"></td>
-                <td><span>&#8377;250</span></td>
-
+               
+                    
+                    <th class="p-2" style="width:625px;">Product</th>
+                    <th>price</th>
+                    <th>Quantity</th>
+                    <th>Sub Total</th>
 
             </tr>
-
-
-
-
         </table>
-
-
+        <table class="center cart_body">
+            
+        </table>
     </section>
 
 
@@ -137,7 +125,7 @@
             </div>
 
             <div class="col-xs-6  col-md-4 text-right">
-                <h5>&#8377; 250</h5>
+                <h5>&#8377; <span id="total1">250</span></h5>
             </div>
         </div>
 
@@ -148,9 +136,9 @@
 
         <div class="row m-0 total_content">
             <div class="col-md-7 text-center">
-                <h5 class=" media_query"> Subtotal &#8377; 250 </h5>
+                <h5 class=" media_query"> Subtotal &#8377; <span id="total">0</span> </h5>
                 <h5 class=" media_query"> Shipping &#8377; 100 </h5>
-                <h5 class=" media_query">&nbsp; &nbsp; &nbsp; Total &#8377; 350 </h5>
+                <h5 class=" media_query">&nbsp; &nbsp; &nbsp; Total &#8377; <span class="total_amount">0</span> </h5>
             </div>
 
             <div class="col-md-4 text-right align-center btn_font">
@@ -164,7 +152,112 @@
 
 
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $(document).ready(function(){
+        let quantity = 0;
+        const storage=JSON.parse(localStorage.getItem('items'));
+        if (storage==null) {
+            console.log('empty')
+        }else{
+            JSON.parse(localStorage.getItem('items')).map(data=>{
+            quantity = quantity+data.quantity;
+            });
+        }
+        
+        $('.iconcart p').html(quantity);
+        total=0;
+        cartData='';
+        if(JSON.parse(localStorage.getItem('items')) ===null){
+            cartData+='<td><h1>No items found in your cart</td>'
+            cartData+='<span>description</span>'
+        }
+        else{
+            JSON.parse(localStorage.getItem('items')).map(data=>{
+            cartData += '<tr><td><img src="'+data.image+'" alt="" class="img" style="width:80px; height:60px;"></td><td class="ptitle" id="'+data.id+'">'+data.title+'</td></td>';
+            cartData+='<td class="price">'+data.price+'</td>'
+             cartData+='<td><div class="row" style="align-items:center;"> <div ><span class="quantity">'+data.quantity+'</span></div> <div class="col"><button type="button" class="fa border-0 fa-caret-up fa-lg quan_up bg-light"  aria-hidden="true" id="quan_up"> </button><br><button type="button" class="fa border-0 fa-caret-down fa-lg quan_down bg-light"  aria-hidden="true"></button><br></div></div></td>';
+            cartData+='<td><span>&#8377;'+data.price*data.quantity+'</span></td></tr>'
+            let da=data.price * data.quantity
+            total=total + da
+            });
+            
+        }
+        
+        $('.cart_body').html(cartData);
+        $('#total').html(total);
+        $('#total1').html(total);
+        $('.total_amount').html(total+100)
+     })
+    $(document).ready(function(){
+         items=[]
+        $('.quan_up').click(function(){
+            item={
+                title:$(this).parent().parent().parent().parent().find('.ptitle').html(),
+                image:$(this).parent().parent().parent().parent().find('.img').attr('src'),
+                price:$(this).parent().parent().parent().parent().find('.price').html(),
+                id:$(this).parent().parent().parent().parent().find('.ptitle').attr('id'),
+                quantity:$(this).parent().parent().parent().parent().find('.quantity').html(),
+            }
+            
+            const localItems = JSON.parse(localStorage.getItem("items"));
+            localItems.map(data=>{
+                    
+                    if(item.id==data.id){
+                        item.quantity=parseInt(data.quantity) + 1;
+                    }
+                    else{
+                        items.push(data);
+                    }
+                });items.push(item)
+            localStorage.setItem('items',JSON.stringify(items));
+            window.location.reload();
+        });
+        $('.quan_down').click(function(){
+            item={
+                title:$(this).parent().parent().parent().parent().find('.ptitle').html(),
+                image:$(this).parent().parent().parent().parent().find('.img').attr('src'),
+                price:$(this).parent().parent().parent().parent().find('.price').html(),
+                id:$(this).parent().parent().parent().parent().find('.ptitle').attr('id'),
+                quantity:$(this).parent().parent().parent().parent().find('.quantity').html(),
+            }
+            if(item.quantity==1){
+                const localItems = JSON.parse(localStorage.getItem("items"));
+                localItems.map(data=>{
+                    if(item.id==data.id){
+                        localStorage.removeItem('items')
+                    }
+                    else{
+                        items.push(data)
+                    }
 
+                })
+                localStorage.setItem('items',JSON.stringify(items));
+                window.location.reload();
+
+            }
+            else{
+                const localItems = JSON.parse(localStorage.getItem("items"));
+                localItems.map(data=>{
+                    
+                    if(item.id==data.id){
+                        item.quantity=parseInt(data.quantity) - 1;
+                    
+                    }
+                    else{
+                        items.push(data);
+                    }
+                    
+                    
+                });items.push(item)
+                
+                localStorage.setItem('items',JSON.stringify(items));
+                window.location.reload();
+
+            }
+        });
+    })
+</script>
 </body>
 
 </html>

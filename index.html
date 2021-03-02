@@ -98,6 +98,10 @@
                     <a class="nav-link" href="profile.html">Meet Our Team</a>
                 </li>
                
+                <li class="nav-item iconcart">
+                    <p>0</p>
+                    <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+                </li>
             </ul>
             <div class="cart-icon">
 
@@ -329,38 +333,42 @@
 
     </section>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function () { 
+            let no = 0;
+            JSON.parse(localStorage.getItem('items')).map(data=>{
+            no = no+data.quantity;
+            });
+            $('.iconcart p').html(no);
+                    
+                    $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",  
+                            function (data) { 
+                                name='';
+                                $.each(data.slice(0,8), function (key, value) { 
+                                    num=value.Product_Name
+                            name+='<div class="column">'
+                            name+='      <div class="card pdetails" id='+value.Product_Id+'>'
 
-            // FETCHING DATA FROM JSON FILE 
-            $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",
-                function (data) {
-                    name = '';
-                    $.each(data.slice(0, 8), function (key, value) {
-                        num = value.Product_Name
-                        name += '<div class="column">'
-                        name += '      <div class="card pdetails" id=' + value.Product_Id + '>'
+                            name+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num+'></div>'
 
-                        name += '         <div class="bgimg1"><img src=' + value.Image_URL + ' alt=' + num + '></div>'
+                                            
+                            name+='          <div class="container">'
+                            name+='             <marquee class="font" >'+num+'</marquee>'
+                            
+                            name+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                            name+='                </p></div></div></div>'
 
-
-                        name += '          <div class="container">'
-                        name += '             <marquee class="font" >' + num + '</marquee>'
-
-                        name += '              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
-                        name += '                </p></div></div></div>'
-
-
-
-                    });
-                    $('#get').html(name);
-                    $('.pdetails').click(function (event) {
-                        val = $(this).attr('id');
-                        console.log('clicked:' + val);
-                        newURl = window.location.href = 'productdetails.html?name=' + val
-                    });
-
-                });
-        }); 
+                            
+                            
+                        });  
+                        $('#get').html(name); 
+                        $('.pdetails').click(function(event){
+                            val=$(this).attr('id');
+                            console.log('clicked:'+val);
+                            newURl = window.location.href='productdetails.html?name='+val
+                        });
+                        
+                    }); 
+                }); 
     </script>
 
 </body>

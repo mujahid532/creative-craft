@@ -80,6 +80,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#section2">Contact Us</a>
                 </li>
+                <li class="nav-item iconcart">
+                    <p>0</p>
+                    <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+                </li>
             </ul>
 
             <div class="cart-icon">
@@ -211,128 +215,135 @@
 
     </footer>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // FETCHING DATA FROM JSON FILE 
-            $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",
-                function (data) {
-                    name = '';
-                    // ITERATING THROUGH OBJECTS 
-                    $.each(data, function (key, value) {
-                        num = value.Product_Name
-                        name += '<div class="column">'
-                        name += '      <div class="card pdetails" id=' + value.Product_Id + '>'
-                        name += '         <div class="bgimg1"><img src=' + value.Image_URL + ' alt=' + num.substring(0, 12) + '></div>'
+<script type="text/javascript">
+$(document).ready(function () {
+    let no = 0;
+     if(JSON.parse(localStorage.getItem('items')) === null){
 
-                        name += '          <div class="container">'
-                        name += '             <h2 class="" >' + num + '</h2>'
-                        name += '              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
-                        name += '                </p></div></div></div>'
+     }else{
 
-                    });
+    JSON.parse(localStorage.getItem('items')).map(data=>{
+    no = no+data.quantity;
+    });}
+    $('.iconcart p').html(no);
+                    $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",  
+                            function (data) { 
+                                name='';
+                        // ITERATING THROUGH OBJECTS 
+                            $.each(data, function (key, value) {                             
+                            num=value.Product_Name
+                            name+='<div class="column">'
+                            name+='      <div class="card pdetails" id='+value.Product_Id+'>'
+                            name+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+                                            
+                            name+='          <div class="container">'
+                            name+='             <h2 class="" >'+num+'</h2>'
+                            name+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                            name+='                </p></div></div></div>'
+                            
+                        }); 
 
-                    $('.nav-link').click(function () {
-                        link_val = $(this).text()
-                        nameSummer = '';
-                        nameWinter = '';
-                        nameRainy = '';
-                        nameAutumn = '';
-                        if (link_val == 'Summer') {
-                            $.each(data, function (key, value) {
-                                if (value.Season == 'Summer') {
+                        $('.nav-link').click( function(){
+                            link_val = $(this).text()
+                            nameSummer='';
+                            nameWinter = '';
+                            nameRainy = '';
+                            nameAutumn = '';
+                            if(link_val == 'Summer'){
+                                $.each(data, function (key, value) { 
+                                    if(value.Season == 'Summer'){
 
-                                    num = value.Product_Name
-                                    nameSummer += '<div class="column">'
-                                    nameSummer += '      <div class="card pdetails" id=' + value.Product_Id + '>'
-                                    nameSummer += '         <div class="bgimg1"><img src=' + value.Image_URL + ' alt=' + num.substring(0, 12) + '></div>'
+                                        num=value.Product_Name
+                                        nameSummer+='<div class="column">'
+                                        nameSummer+='      <div class="card pdetails" id='+value.Product_Id+'>'
+                                        nameSummer+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+                                                        
+                                        nameSummer+='          <div class="container">'
+                                        nameSummer+='             <h2 class="" >'+num+'</h2>'
+                                        nameSummer+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                                        nameSummer+='                </p></div></div></div>'
+                                    }
+                                });   
+                                $('#getSummer').html(nameSummer);   
+                                $('.pdetails').click(function(event){
+                                    val=$(this).attr('id');
+                                    console.log('clicked:'+val);
+                                    newURl = window.location.href='productdetails.html?name='+val
+                                });                      
+                            }else if(link_val == 'Winter'){
+                                $.each(data, function (key, value) { 
+                                    if(value.Season == 'Winter'){
 
-                                    nameSummer += '          <div class="container">'
-                                    nameSummer += '             <h2 class="" >' + num + '</h2>'
-                                    nameSummer += '              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
-                                    nameSummer += '                </p></div></div></div>'
-                                }
-                            });
-                            $('#getSummer').html(nameSummer);
-                            $('.pdetails').click(function (event) {
-                                val = $(this).attr('id');
-                                console.log('clicked:' + val);
-                                newURl = window.location.href = 'productdetails.html?name=' + val
-                            });
-                        } else if (link_val == 'Winter') {
-                            $.each(data, function (key, value) {
-                                if (value.Season == 'Winter') {
+                                        num=value.Product_Name
+                                        nameWinter+='<div class="column">'
+                                        nameWinter+='      <div class="card pdetails" id='+value.Product_Id+'>'
+                                        nameWinter+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+                                                        
+                                        nameWinter+='          <div class="container">'
+                                        nameWinter+='             <h2 class="" >'+num+'</h2>'
+                                        nameWinter+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                                        nameWinter+='                </p></div></div></div>'
+                                    }
+                                });   
+                                $('#getWinter').html(nameWinter);
+                                $('.pdetails').click(function(event){
+                                    val=$(this).attr('id');
+                                    console.log('clicked:'+val);
+                                    newURl = window.location.href='productdetails.html?name='+val
+                                });
+                            }else if(link_val == 'Rainy'){
+                                $.each(data, function (key, value) { 
+                                    if(value.Season == 'Rainy'){
+                                        num=value.Product_Name
+                                        nameRainy+='<div class="column">'
+                                        nameRainy+='      <div class="card pdetails" id='+value.Product_Id+'>'
+                                        nameRainy+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+                                                        
+                                        nameRainy+='          <div class="container">'
+                                        nameRainy+='             <h2 class="" >'+num+'</h2>'
+                                        nameRainy+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                                        nameRainy+='                </p></div></div></div>'
+                                    }
+                                });   
+                                $('#getRainy').html(nameRainy);
+                                $('.pdetails').click(function(event){
+                                    val=$(this).attr('id');
+                                    console.log('clicked:'+val);
+                                    newURl = window.location.href='productdetails.html?name='+val
+                                });
+                            }else if(link_val == 'Autumn'){
+                                $.each(data, function (key, value) { 
+                                    if(value.Season == 'Autumn'){
 
-                                    num = value.Product_Name
-                                    nameWinter += '<div class="column">'
-                                    nameWinter += '      <div class="card pdetails" id=' + value.Product_Id + '>'
-                                    nameWinter += '         <div class="bgimg1"><img src=' + value.Image_URL + ' alt=' + num.substring(0, 12) + '></div>'
-
-                                    nameWinter += '          <div class="container">'
-                                    nameWinter += '             <h2 class="" >' + num + '</h2>'
-                                    nameWinter += '              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
-                                    nameWinter += '                </p></div></div></div>'
-                                }
-                            });
-                            $('#getWinter').html(nameWinter);
-                            $('.pdetails').click(function (event) {
-                                val = $(this).attr('id');
-                                console.log('clicked:' + val);
-                                newURl = window.location.href = 'productdetails.html?name=' + val
-                            });
-                        } else if (link_val == 'Rainy') {
-                            $.each(data, function (key, value) {
-                                if (value.Season == 'Rainy') {
-                                    num = value.Product_Name
-                                    nameRainy += '<div class="column">'
-                                    nameRainy += '      <div class="card pdetails" id=' + value.Product_Id + '>'
-                                    nameRainy += '         <div class="bgimg1"><img src=' + value.Image_URL + ' alt=' + num.substring(0, 12) + '></div>'
-
-                                    nameRainy += '          <div class="container">'
-                                    nameRainy += '             <h2 class="" >' + num + '</h2>'
-                                    nameRainy += '              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
-                                    nameRainy += '                </p></div></div></div>'
-                                }
-                            });
-                            $('#getRainy').html(nameRainy);
-                            $('.pdetails').click(function (event) {
-                                val = $(this).attr('id');
-                                console.log('clicked:' + val);
-                                newURl = window.location.href = 'productdetails.html?name=' + val
-                            });
-                        } else if (link_val == 'Autumn') {
-                            $.each(data, function (key, value) {
-                                if (value.Season == 'Autumn') {
-
-                                    num = value.Product_Name
-                                    nameAutumn += '<div class="column">'
-                                    nameAutumn += '      <div class="card pdetails" id=' + value.Product_Id + '>'
-                                    nameAutumn += '         <div class="bgimg1"><img src=' + value.Image_URL + ' alt=' + num.substring(0, 12) + '></div>'
-
-                                    nameAutumn += '          <div class="container">'
-                                    nameAutumn += '             <h2 class="" >' + num + '</h2>'
-                                    nameAutumn += '              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
-                                    nameAutumn += '                </p></div></div></div>'
-                                }
-                            });
-                            $('#getAutumn').html(nameAutumn);
-                            $('.pdetails').click(function (event) {
-                                val = $(this).attr('id');
-                                console.log('clicked:' + val);
-                                newURl = window.location.href = 'productdetails.html?name=' + val
-                            });
-                        }
-                    })
-                    //INSERTING ROWS INTO TABLE  
-                    $('#get').html(name);
-                    $('.pdetails').click(function (event) {
-                        val = $(this).attr('id');
-                        console.log('clicked:' + val);
-                        /// newURl = window.location.href='productdetails.html?name='+val
-                    });
-
-                });
-        }); 
-    </script>
+                                        num=value.Product_Name
+                                        nameAutumn+='<div class="column">'
+                                        nameAutumn+='      <div class="card pdetails" id='+value.Product_Id+'>'
+                                        nameAutumn+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
+                                                        
+                                        nameAutumn+='          <div class="container">'
+                                        nameAutumn+='             <h2 class="" >'+num+'</h2>'
+                                        nameAutumn+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                                        nameAutumn+='                </p></div></div></div>'
+                                    }
+                                });   
+                                $('#getAutumn').html(nameAutumn);
+                                $('.pdetails').click(function(event){
+                                    val=$(this).attr('id');
+                                    console.log('clicked:'+val);
+                                    newURl = window.location.href='productdetails.html?name='+val
+                                });
+                            }
+                        })
+                        $('#get').html(name); 
+                        $('.pdetails').click(function(event){
+                            val=$(this).attr('id');
+                            console.log('clicked:'+val);
+                            newURl = window.location.href='productdetails.html?name='+val
+                        });
+                        
+                    }); 
+                }); 
+</script>
 </body>
 
 </html>
