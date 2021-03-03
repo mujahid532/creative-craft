@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -330,11 +331,8 @@
     </section>
     <script type="text/javascript">
         $(document).ready(function () { 
-            let no = 0;
-            JSON.parse(localStorage.getItem('items')).map(data=>{
-            no = no+data.quantity;
-            });
-            $('.iconcart p').html(no);
+            var itemm=JSON.parse(localStorage.getItem('items'))
+            $('.iconcart p').html(itemm.length);
                     
                     $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",  
                             function (data) { 
