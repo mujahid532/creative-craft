@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body{
+ background-color: #2a60480e!important;
+  
+  }
+
+  /* header */
+  
+  .radial-bg {
+    background-color: #2a6049;
+    padding: 10px 0 ;
+  }
+  
+  .c-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  
+  }
+  
+  form a {
+    font-size: 17px;
+    padding: 0px 20px;
+    color: #fff;
+  }
+  form a:hover {
+    color: #fff !important;
+  }
+  
+  /* navbar */
+  
+  .logo {
+    height: 50px;
+    padding-left: 40px;
+  }
+    
+  .navbar-brand,
+  .nav-link {
+    color: #2a6049 !important;
+    font-size: 20px !important;
+  }
+  ul li a {
+    margin-left: 30px;
+    text-decoration: initial!important;
+  }
+  
+  a:hover{
+    text-decoration: underline !important;
+  }
+  .font{
+    font-size: 1.8rem;
+    
+  }
+  
+  .cartcolor{
+    color: #2a6049 !important;
+    font-size: 20px;
+   margin-right: 25px;
+  }
+  
+
+  .text-indent{
+      text-indent: 50px;
+      /* white-space: pre; */
+      line-height:30px;
+      margin-bottom: 100px;
+  }
+
+  .text_color{
+    color:#2a6049 ;
+  }
+  #section{
+      /* background-color: white;    */
+      border-radius:50px  100px  200px ;
+      padding-bottom: 1px
+  }
+
+   .card-title{
+      color: #2a6049;
+      font-weight: bold;
+       
+  }
+  /* card */
+
+  .our-team{
+    /* width: 900px; */
+    margin: 100px auto;
+    text-align: center;
+    font-family: arial;
+  
+  }
+
+  .img-style{
+    width: 50% !important;
+    margin-top:-50px!important;
+    margin:auto;
+    height: 45%;
+      
+}
+.card{
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    box-shadow: 15px 15px 5px #2a6049 ;
+    border: none !important;
+    /* background-color:rgba(211, 211, 211, 0.096)!important; */
+}
+.card-body a{
+font-size: larger;
+padding: 5px;
+
+}
+
+/* .pro-card-margin-left{
+    margin-left:220px!important;
+} */
+
+/* Footer */
+
+.footer-top {
+    padding: 60px 0;
+    background: #333;
+    text-align: left;
+    color: #aaa;
+    margin-top: 50px;
+  }
+  
+
+   @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+  
+    header {
+      display: none !important;
+    }
+    .logo {
+        padding-left:15px !important;
+    }
+  
+      ul li a {
+        margin-left: 0px;
+      }
+  
+    .navbar-collapse {
+      text-align: center;
+    }
+
+    .profile-card{
+        width: 250px;
+    }
+    .card{
+        margin-bottom: 80px !important;
+    }
+    
+    /* .pro-card-margin-left{
+        margin-left:20px!important;
+    } */
+     h1{
+         font-size: 1.5rem !important;
+       
+     }
+
+     h5{
+         font-size: 0.9rem!important;
+     }
+    
+}
