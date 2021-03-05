@@ -107,6 +107,9 @@ th {
     display: flex;
     flex-direction: column;
 }
+.ptitle:hover{
+    cursor: pointer;
+}
 
 td {
     font-size: 18px;
