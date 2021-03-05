@@ -340,8 +340,13 @@
     </section>
     <script type="text/javascript">
         $(document).ready(function () {
-            var itemm = JSON.parse(localStorage.getItem('items'))
-            $('.iconcart p').html(itemm.length);
+            var storage=JSON.parse(localStorage.getItem('items'))
+            if(storage==null){
+                count=0
+            }else{
+                count=storage.length
+            }
+            $('.iconcart p').html(count);
 
             $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",
                 function (data) {
