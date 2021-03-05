@@ -27,7 +27,32 @@ form a {
 form a:hover {
     color: #fff !important;
 }
-
+/*loader*/
+.loader{
+        position: fixed;
+        z-index: 99999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        text-align: center;
+        margin-top: 14rem;
+    }
+    .loader > img{
+        width: 17%;
+    }
+    .loader.hidden{
+        /* animation: fadeOut 7s;
+        animation-fill-mode:forwards; */
+        display: none;
+    }
+    @keyframes fadeOut{
+        100%{
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
 /* navbar  */
 .logo {
     height: 50px;

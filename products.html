@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+      <!-- google font -->
+
 </head>
 
 <body>
@@ -85,7 +87,10 @@
                     <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
                 </li>
             </ul>
-
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" id="search"placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" onclick="" type="submit">Search</button>
+            </form>
             <!-- <div class="cart-icon">
 
                 <a href="cart.html" target="_blank" class="cartcolor"> Cart
@@ -216,16 +221,11 @@
     </footer>
 
 <script type="text/javascript">
+
 $(document).ready(function () {
-    let no = 0;
-     if(JSON.parse(localStorage.getItem('items')) === null){
-
-     }else{
-
-    JSON.parse(localStorage.getItem('items')).map(data=>{
-    no = no+data.quantity;
-    });}
-    $('.iconcart p').html(no);
+    var itemm=JSON.parse(localStorage.getItem('items'))
+    $('.iconcart p').html(itemm.length);
+    
                     $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",  
                             function (data) { 
                                 name='';
@@ -343,6 +343,12 @@ $(document).ready(function () {
                         
                     }); 
                 }); 
+const search=()=>{
+    console.log('ooolala')
+    hgyrffhytfff = document.getElementById('search').value()[0];
+        
+    }
+    search();
 </script>
 </body>
 

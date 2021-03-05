@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +40,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- google font -->
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 
 </head>
 
@@ -97,7 +103,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="profile.html">Meet Our Team</a>
                 </li>
-               
+
                 <li class="nav-item iconcart">
                     <p>0</p>
                     <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
@@ -333,42 +339,39 @@
 
     </section>
     <script type="text/javascript">
-        $(document).ready(function () { 
-            let no = 0;
-            JSON.parse(localStorage.getItem('items')).map(data=>{
-            no = no+data.quantity;
-            });
-            $('.iconcart p').html(no);
-                    
-                    $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",  
-                            function (data) { 
-                                name='';
-                                $.each(data.slice(0,8), function (key, value) { 
-                                    num=value.Product_Name
-                            name+='<div class="column">'
-                            name+='      <div class="card pdetails" id='+value.Product_Id+'>'
+        $(document).ready(function () {
+            var itemm = JSON.parse(localStorage.getItem('items'))
+            $('.iconcart p').html(itemm.length);
 
-                            name+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num+'></div>'
+            $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",
+                function (data) {
+                    name = '';
+                    $.each(data.slice(0, 8), function (key, value) {
+                        num = value.Product_Name
+                        name += '<div class="column">'
+                        name += '      <div class="card pdetails" id=' + value.Product_Id + '>'
 
-                                            
-                            name+='          <div class="container">'
-                            name+='             <marquee class="font" >'+num+'</marquee>'
-                            
-                            name+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
-                            name+='                </p></div></div></div>'
+                        name += '         <div class="bgimg1"><img src=' + value.Image_URL + ' alt=' + num + '></div>'
 
-                            
-                            
-                        });  
-                        $('#get').html(name); 
-                        $('.pdetails').click(function(event){
-                            val=$(this).attr('id');
-                            console.log('clicked:'+val);
-                            newURl = window.location.href='productdetails.html?name='+val
-                        });
-                        
-                    }); 
-                }); 
+
+                        name += '          <div class="container">'
+                        name += '             <marquee class="font" >' + num + '</marquee>'
+
+                        name += '              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
+                        name += '                </p></div></div></div>'
+
+
+
+                    });
+                    $('#get').html(name);
+                    $('.pdetails').click(function (event) {
+                        val = $(this).attr('id');
+                        console.log('clicked:' + val);
+                        newURl = window.location.href = 'productdetails.html?name=' + val
+                    });
+
+                });
+        }); 
     </script>
 
 </body>

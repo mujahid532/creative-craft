@@ -113,7 +113,20 @@ td {
     font-weight: bold;
     padding: 15px;
 }
-
+.modal-body .cart_body td{
+    font-size: 12px;
+    padding: 10px;
+}
+.modal-body .cart_body .dropdown-menu{
+    display: none;
+}
+.modal-body .cart-pdt{
+    font-size: 12px;
+}
+.dropdown-menu li:hover{
+    background-color: #eceaea;
+    cursor: pointer;
+}
 .input-style {
     width: 85px;
 }
@@ -127,6 +140,17 @@ td {
     align-items: center;
     padding: 6px;
 }
+.modaltotal{
+    background-color: #2a6048d7;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    color: white;
+    
+    align-items: center;
+    
+}
+
 
 .container2 {
     background-color: white;

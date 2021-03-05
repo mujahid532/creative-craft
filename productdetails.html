@@ -26,8 +26,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-
+ 
 
 </head>
 
@@ -59,7 +58,11 @@
 
         </div>
     </header>
+<div class="loader">
 
+    <img src="images/loader.gif" alt="loading...">
+
+</div>
     <!-- navbar start -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top navpaddingleft p-0">
@@ -154,6 +157,18 @@
 
                                 Price : Rs <span class="price"></span>/-
                             </h5>
+                            <select class="form-control w-50 form-control-sm quantity_select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>    
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
                         </div>
 
 
@@ -230,37 +245,35 @@
                 image:$('.pimage').attr('src'),
                 price:$('.price').text(),
                 id:$('.ptitle').attr('id'),
-                quantity:1
+                quantity:$('.quantity_select option:selected').val()
             }
             if(JSON.parse(localStorage.getItem("items")) === null){
                 items.push(item);
                 localStorage.setItem("items",JSON.stringify(items));
-                window.location.reload();
+                location.reload();
             }else{
                 const localItems = JSON.parse(localStorage.getItem("items"));
                 localItems.map(data=>{
                     if(item.id == data.id){
-                        item.quantity = data.quantity + 1;
+                        item.quantity = parseInt(data.quantity) + parseInt(item.quantity);
                     }else{
                         items.push(data);
                     }
                 });
                 items.push(item);
                 localStorage.setItem('items',JSON.stringify(items));
-                window.location.reload();
+                location.reload();
             }
+            
         })
         let quantity = 0;
         const storage=JSON.parse(localStorage.getItem('items'));
-        if (storage==null) {
-            console.log('empty')
+        if(storage==null){
+            count=0
         }else{
-            JSON.parse(localStorage.getItem('items')).map(data=>{
-            quantity = quantity+data.quantity;
-            });
+            count=storage.length
         }
-        
-        $('.iconcart p').html(quantity);
+        $('.iconcart p').html(count);
             
         const parameter=new URLSearchParams(window.location.search);
         var dat=parameter.get('name');
@@ -275,13 +288,15 @@
                         $('.size span').html(value.Size)
                         $('.season span').html(value.Season)
                         $('.age span').html(value.Age)
-                        // $('.pimage').attr('alt',value.Product_Name.substring(0,15))
-                        
                     }
 
                 });
         });
     });
+    window.addEventListener("load", function () {
+            const loader_ = document.querySelector(".loader");
+            loader_.className += " hidden";
+        })
 </script>
 
 </body>

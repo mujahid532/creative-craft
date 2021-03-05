@@ -49,8 +49,9 @@ a:hover{
   text-decoration: underline !important;
 }
 .font{
-  font-size: 1.8rem;
-  
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
 .iconcart{
     cursor: pointer;

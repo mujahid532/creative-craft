@@ -81,10 +81,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.html#section5">Contact Us</a>
                 </li>
-                <li class="nav-item iconcart">
+                <!-- <li class="nav-item iconcart">
                     <p>0</p>
                     <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
-                </li>
+                </li> -->
             </ul>
 
         </div>
@@ -142,8 +142,79 @@
             </div>
 
             <div class="col-md-4 text-right align-center btn_font">
-                <button type="button" class="btn btn-primary btn-sm"><a href="#" target="_blank">
-                        Place Order</a></button>
+                <button type="button" class="btn btn-primary btn-sm place" data-toggle="modal" data-target=".bd-example-modal-lg">Place Order</button>
+                <div class="modal fade bd-example-modal-lg text-left" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Shipping Items</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="center">
+                                    <tr class="cart-pdt">
+                                        <th class="p-2" style="width:400px;text-align: left;">Product</th>
+                                        <th>price</th>
+                                        <th>Quantity</th>
+                                        <th>Sub Total</th>
+
+                                    </tr>
+                                </table>
+                                <table class="center cart_body">
+            
+                                </table>
+                                <section class="modaltotal mt-3">
+                                    <div class="row m-0 total_content" style="height: 25px;">
+                                        <div class="col-xs-6 col-md-7 text-center media_query">
+                                            <p class=" media_query">Total Price</p>
+                                        </div>
+
+                                        <div class="col-xs-6  col-md-4 text-right">
+                                            <p>&#8377; <span id="total2">250</span></p>
+                                        </div>
+                                    </div>
+
+                                </section>
+                            </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Shipping Address</h5>
+                                
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group ">
+                                        <label for="recipient-name" class="col-form-label text-left">Full Name:</label>
+                                        <input type="text" class="form-control" id="recipient-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label text-left">Phone Number:</label>
+                                        <input type="text" class="form-control" id="recipient-name">
+                                    </div>
+                                    <div class="form-group">
+                                       <label for="message-text" class="col-form-label text-left">Address:</label>
+                                       <textarea class="form-control" id="message-text"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Payment Info</h5>
+                                
+                            </div>
+                            
+                            <div class="modal-body">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Cash on delivery</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="Submit" class="btn btn-primary">Place Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -154,18 +225,19 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script>
+    
     $(document).ready(function(){
-        let quantity = 0;
-        const storage=JSON.parse(localStorage.getItem('items'));
-        if (storage==null) {
-            console.log('empty')
-        }else{
-            JSON.parse(localStorage.getItem('items')).map(data=>{
-            quantity = quantity+data.quantity;
-            });
-        }
+        // let quantity = 0;
+        // const storage=JSON.parse(localStorage.getItem('items'));
+        // if (storage==null) {
+        //     console.log('empty')
+        // }else{
+        //     JSON.parse(localStorage.getItem('items')).map(data=>{
+        //     quantity = quantity+data.quantity;
+        //     });
+        // }
         
-        $('.iconcart p').html(quantity);
+        // $('.iconcart p').html(quantity);
         total=0;
         cartData='';
         if(JSON.parse(localStorage.getItem('items')) ===null){
@@ -174,9 +246,11 @@
         }
         else{
             JSON.parse(localStorage.getItem('items')).map(data=>{
+
             cartData += '<tr><td><img src="'+data.image+'" alt="" class="img" style="width:80px; height:60px;"></td><td class="ptitle" id="'+data.id+'">'+data.title+'</td></td>';
             cartData+='<td class="price">'+data.price+'</td>'
-             cartData+='<td><div class="row" style="align-items:center;"> <div ><span class="quantity">'+data.quantity+'</span></div> <div class="col"><button type="button" class="fa border-0 fa-caret-up fa-lg quan_up bg-light"  aria-hidden="true" id="quan_up"> </button><br><button type="button" class="fa border-0 fa-caret-down fa-lg quan_down bg-light"  aria-hidden="true"></button><br></div></div></td>';
+            cartData+='<td class=""><button class="btn btn-default dropdown-toggle bg-light m-0" type="button" data-toggle="dropdown">'+data.quantity+'<span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 3rem;text-align: center;z-index:9999;top: -124px;"><li class="listdata">1</li><li class="listdata">2</li><li class="listdata">3</li><li class="listdata">4</li><li class="listdata">5</li><li class="listdata">6</li><li class="listdata">7</li><li class="listdata">8</li><li class="listdata">9</li> <li class="listdata">10</li>  </ul></td>'
+           //  cartData+='<td><div class="row" style="align-items:center;"> <div ><span class="quantity">'+data.quantity+'</span></div> <div class="col"><button type="button" class="fa border-0 fa-caret-up fa-lg quan_up bg-light"  aria-hidden="true" id="quan_up"> </button><br><button type="button" class="fa border-0 fa-caret-down fa-lg quan_down bg-light"  aria-hidden="true"></button><br></div></div></td>';
             cartData+='<td><span>&#8377;'+data.price*data.quantity+'</span></td></tr>'
             let da=data.price * data.quantity
             total=total + da
@@ -187,10 +261,35 @@
         $('.cart_body').html(cartData);
         $('#total').html(total);
         $('#total1').html(total);
+        $('#total2').html(total);
         $('.total_amount').html(total+100)
      })
     $(document).ready(function(){
          items=[]
+          $('.listdata').click(function(){
+            item={
+                quantity:$(this).text(),
+                title:$(this).parent().parent().parent().find('.ptitle').html(),
+                id:$(this).parent().parent().parent().find('.ptitle').attr('id'),
+                price:$(this).parent().parent().parent().find('.price').html(),
+                image:$(this).parent().parent().parent().find('.img').attr('src')
+
+            }
+            const localItems = JSON.parse(localStorage.getItem("items"));
+                localItems.map(data=>{
+                    if(item.id==data.id){
+                        data.quantity=item.quantity
+                    }
+                    else{
+                        items.push(data)
+                    }
+
+                })
+                items.push(item)
+                localStorage.setItem('items',JSON.stringify(items));
+                location.reload();
+            
+         })
         $('.quan_up').click(function(){
             item={
                 title:$(this).parent().parent().parent().parent().find('.ptitle').html(),
@@ -211,7 +310,7 @@
                     }
                 });items.push(item)
             localStorage.setItem('items',JSON.stringify(items));
-            window.location.reload();
+            location.reload();
         });
         $('.quan_down').click(function(){
             item={
@@ -233,7 +332,7 @@
 
                 })
                 localStorage.setItem('items',JSON.stringify(items));
-                window.location.reload();
+                location.reload();
 
             }
             else{
@@ -252,10 +351,16 @@
                 });items.push(item)
                 
                 localStorage.setItem('items',JSON.stringify(items));
-                window.location.reload();
+                location.reload();
 
             }
         });
+        $('.place').click(function(){
+            const toggle = document.querySelector(".dropdown-toggle");
+            toggle.className +=" hello"
+            console.log('hello')
+        })
+
     })
 </script>
 </body>
