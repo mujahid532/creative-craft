@@ -35,7 +35,6 @@ form a:hover {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: white;
         text-align: center;
         margin-top: 14rem;
     }
@@ -43,8 +42,8 @@ form a:hover {
         width: 17%;
     }
     .loader.hidden{
-        /* animation: fadeOut 7s;
-        animation-fill-mode:forwards; */
+         animation: fadeOut 7145s;
+        animation-fill-mode:forwards; 
         display: none;
     }
     @keyframes fadeOut{
