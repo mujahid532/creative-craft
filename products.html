@@ -85,10 +85,10 @@
                     <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <div class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="search" id="search"placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" onclick="" type="submit">Search</button>
-            </form>
+              <button class="btn btn-outline-success my-2 my-sm-0 searchButton" type="button">Search</button>
+            </div>
             <!-- <div class="cart-icon">
 
                 <a href="cart.html" target="_blank" class="cartcolor"> Cart
@@ -221,8 +221,13 @@
 <script type="text/javascript">
 
 $(document).ready(function () {
-    var itemm=JSON.parse(localStorage.getItem('items'))
-    $('.iconcart p').html(itemm.length);
+    var storage=JSON.parse(localStorage.getItem('items'))
+    if(storage==null){
+        count=0
+    }else{
+        count=storage.length
+    }
+    $('.iconcart p').html(count);
     
                     $.getJSON("https://script.google.com/macros/s/AKfycby7ZtHodoE9x6-I202Pd_8QjtVQ9W9QUSY3p6rGBjN6y2q6xYxKIrnPjw/exec",  
                             function (data) { 
@@ -234,8 +239,8 @@ $(document).ready(function () {
                             name+='      <div class="card pdetails" id='+value.Product_Id+'>'
                             name+='         <div class="bgimg1"><img src='+value.Image_URL+' alt='+num.substring(0,12)+'></div>'
                                             
-                            name+='          <div class="container">'
-                            name+='             <h2 class="" >'+num+'</h2>'
+                            name+='          <div class="container card-body">'
+                            name+='             <h2 class="">'+num+'</h2>'
                             name+='              <p><button class="button" data-toggle="modal" data-target="#staticBackdrop">View Details</button>'
                             name+='                </p></div></div></div>'
                             
@@ -343,10 +348,40 @@ $(document).ready(function () {
                 }); 
 const search=()=>{
     console.log('ooolala')
-    hgyrffhytfff = document.getElementById('search').value()[0];
+    //hgyrffhytfff = document.getElementById('search').value()[0];
         
     }
     search();
+</script>
+<script>
+$(document).ready(function(){
+    $('.searchButton').click(function(){
+        var get_Input = $('#search');
+        noo='';
+        MainSearch = $(get_Input).val().toUpperCase();
+        //name__ = document.getElementById('get')
+        card__= document.getElementsByClassName('column')
+        for(i=0;i<=card__.length;i++){
+            name__ = card__[i].getElementsByTagName('h2')[0]
+            //console.log(name__)
+            if(name__){
+                let textVal = name__.textContent
+                console.log(textVal)
+                if(textVal.toUpperCase().indexOf(MainSearch) > -1){
+                    card__[i].style.display = ""
+                }else{
+                    card__[i].style.display = "none";
+                }
+            }else{
+                noo+='<h1>No Items Found</h1>'
+                $('.column').html(noo)
+            }
+        }
+
+        console.log(card__)
+    })
+})
+    
 </script>
 </body>
 

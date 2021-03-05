@@ -290,14 +290,19 @@
                         $('.season span').html(value.Season)
                         $('.age span').html(value.Age)
                     }
-
+                    
                 });
+                loader=document.getElementsByClassName('loader');
+                loader.style.display="none";
         });
+        
     });
     window.addEventListener("load", function () {
-            const loader_ = document.querySelector(".loader");
-            loader_.className += " hidden";
-        })
+                        const loader_ = document.querySelector(".loader");
+                        loader_.className += " hidden";
+                        console.log('kam karra')
+                     })
+    
 </script>
 
 </body>
