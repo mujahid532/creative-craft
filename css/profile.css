@@ -96,6 +96,10 @@
   
   }
 
+  .owner-card{
+    width: 35%;
+  }
+
   .img-style{
     width: 50% !important;
     margin-top:-50px!important;
@@ -155,6 +159,9 @@ padding: 5px;
         margin-bottom: 80px !important;
     }
     
+    .owner-card{
+      width: auto;
+    }
     /* .pro-card-margin-left{
         margin-left:20px!important;
     } */
@@ -164,7 +171,7 @@ padding: 5px;
      }
 
      h5{
-         font-size: 0.9rem!important;
+         font-size: 1.2rem!important;
      }
     
 }
