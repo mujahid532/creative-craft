@@ -100,25 +100,23 @@
 
             <h2>Shopping cart</h2>
         </main>
-        <table class="center table-responsive-sm">
-            <tr class="cart-pdt">
-               
-                    
-                    <th class="p-2" style="width:625px;">Product</th>
+       
+        <div class="table-responsive">
+        <table class="center table ">
+            <thead>
+                <tr  class="cart-pdt">
+                    <th></th>
+                    <th>Product description</th>
                     <th>price</th>
                     <th>Quantity</th>
                     <th>Sub Total</th>
+                </tr>
+            </thead>
 
-            </tr>
-        </table>
-        <table class="center cart_body table-responsive-sm">
-            
-        </table>
-    </section>
-
+                <tbody class="cart_body">
+                </tbody>
             </table>
         </div>
-
         <div class="main mt-3">
 
             <div class="row m-0 total_content">
@@ -132,8 +130,6 @@
             </div>
 
         </div>
-
-
 
         <section class="section mt-4">
 
@@ -253,8 +249,8 @@
 
         </section> -->
 
-
-
+    </article>
+<!-- HTML  -->
 
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script>
@@ -312,11 +308,8 @@
                         price: $(this).parent().parent().parent().find('.price').html(),
                         image: $(this).parent().parent().parent().find('.img').attr('src')
 
-    </article>
 
 
-                        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script>
 
                         $(document).ready(function () {
                             // let quantity = 0;
@@ -329,15 +322,6 @@
                             //     });
                             // }
 
-                            // $('.iconcart p').html(quantity);
-                            total = 0;
-            cartData = '';
-            if (JSON.parse(localStorage.getItem('items')) === null) {
-                            cartData += '<td><h1>No items found in your cart</td>'
-                cartData += '<span>description</span>'
-            }
-            else {
-                            JSON.parse(localStorage.getItem('items')).map(data => {
 
                                 cartData += '<tr><td><img src="' + data.image + '" alt="" class="img" style="width:80px; height:60px;"></td><td class="ptitle" id="' + data.id + '">' + data.title + '</td></td>';
                                 cartData += '<td class="price">' + data.price + '</td>'
